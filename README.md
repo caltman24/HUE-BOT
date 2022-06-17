@@ -12,7 +12,6 @@ Hue Bot is a work in progress bot for Discord servers build on top of [discord.j
   <br>
 </p>
 
-
 ## Upcoming Features:
 ### Commands
 - `/lights`&nbsp; -> Lists all lights and their corresponding ids
