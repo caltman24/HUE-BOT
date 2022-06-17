@@ -1,0 +1,22 @@
+{
+  "name": "hue-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "nodemon src/bot.ts",
+    "build": "tsc -p .",
+    "preview": "node dist/bot.ts",
+    "deploy": "ts-node src/deploy-commands.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
+    "discord-api-types": "^0.34.0",
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1"
+  }
+}
