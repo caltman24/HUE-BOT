@@ -1,8 +1,13 @@
 # HUE-BOT
-Hue Bot is a work in progress bot for Discord servers build on top of [discord.js](https://discord.js.org) using [node.js](https://nodejs.org). This bot will be able to connect to your philip hue bridge and control your devices with commands
+<div align="center">
+  <br>
+  <p>
+    <img src="https://res.cloudinary.com/drvo6kdsl/image/upload/f_auto,q_auto/v1655453253/site/bots/hue-bot-avatar-black_256x256_hllikm.jpg" alt="discord.js" />
+  </p>
+</div>
 
 <p align="center">
-  <br><br>
+  <br>
   <a href="https://discord.gg/3aR5MxGCrB">
     <img src="https://discord.com/api/guilds/576849541077401602/widget.png?style=shield" alt="Discord Server">
   </a>
@@ -12,8 +17,10 @@ Hue Bot is a work in progress bot for Discord servers build on top of [discord.j
   <a href="https://nodejs.org">
     <img src="https://badgen.net/npm/node/discord.js" alt="Node version">
   </a>
-  <br>
+  <br><br>
 </p>
+
+Hue Bot is a work in progress bot for Discord servers build on top of [discord.js](https://discord.js.org) using [node.js](https://nodejs.org). This bot will be able to connect to your philip hue bridge and control your devices with commands
 
 ## Upcoming Features:
 ### Commands
