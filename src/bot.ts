@@ -1,10 +1,10 @@
+import { config } from "dotenv";
+config();
 import { Client, Collection, CommandInteraction, Intents } from "discord.js";
 import { ApplicationClient } from "./bot.types";
 const { TOKEN } = process.env;
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { config } from "dotenv";
-config();
 
 // TODO: Add event handler
 const client = new Client({
