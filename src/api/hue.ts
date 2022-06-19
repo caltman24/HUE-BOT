@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from "axios";
 config();
 const { USER_ID, BRIDGE_IP } = process.env;
 
-type id = string;
+export type id = string | number;
 
 interface FetchLightFunc {
   (): Promise<AxiosResponse>;
@@ -16,8 +16,8 @@ interface LightOptions {
   bri?: number;
 }
 
-interface LightsObject {
-  [key: id]: any;
+interface IDList {
+  [key: id]: string;
 }
 
 interface Hues {
@@ -57,15 +57,19 @@ export const fetchLights: FetchLightFunc = async () => {
 export const getLightIds = async (fetchLights: FetchLightFunc) => {
   const { data } = await fetchLights();
   const lightIds = Object.keys(data);
-  const lights = {};
+  const idList: IDList = {};
   lightIds.forEach((id) => {
-    Object.assign(lights, { [id]: data[id].name });
+    Object.assign(idList, { [id]: data[id].name });
   });
-  return lights as LightsObject;
+  return idList;
 };
 
-getLightIds(fetchLights).then((ids) => {
-  console.log(ids);
+getLightIds(fetchLights).then((idList) => {
+  console.log(idList);
+  const lightIds = Object.keys(idList);
+  const lightNames = Object.values(idList);
+  const lightList = lightIds.map((id, i) => `${id}: ${lightNames[i]}`);
+  console.log(`${lightList.join("\n")}`);
 });
 
 // Control a light by light ID and the desired state
