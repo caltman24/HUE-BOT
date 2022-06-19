@@ -64,6 +64,11 @@ export const getLightIds = async (fetchLights: FetchLightFunc) => {
   return idList;
 };
 
+export const getCurrentHue = async (id: id) => {
+  const { data } = await fetchLights();
+  return data[id].state.hue as number;
+};
+
 // Control a light by light ID and the desired state
 export const controlLight = async (
   light: id,

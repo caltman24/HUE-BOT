@@ -11,16 +11,17 @@ import {
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("random")
-    .setDescription("Set office light to random")
+    .setDescription("Set light to random color")
     .addIntegerOption((option) =>
       option
         .setName("light-id")
         .setDescription("ID of light to control")
         .setRequired(true)
-    ),
+    )
+    .setDefaultMemberPermissions(0),
   async execute(interaction) {
     await interaction.deferReply();
-    const lightId = interaction.options.getInteger("light-id");
+    const lightId = interaction?.options.getInteger("light-id");
     const idList = await getLightIds(fetchLights);
     const lightIds = Object.keys(idList) as id[];
     const existingLight = lightIds.includes(lightId.toString());
