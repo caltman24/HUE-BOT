@@ -6,7 +6,6 @@ const { TOKEN } = process.env;
 import * as fs from "node:fs";
 import * as path from "node:path";
 
-// TODO: Add event handler
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS],
 }) as ApplicationClient;

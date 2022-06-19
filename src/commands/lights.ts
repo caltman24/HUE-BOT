@@ -1,4 +1,3 @@
-// TODO: add `lights` command that returns a list of lights and their IDs
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { Command } from "../bot.types";
 import { fetchLights, getLightIds, id } from "../api/hue";
