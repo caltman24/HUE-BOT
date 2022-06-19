@@ -1,7 +1,12 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { Command } from "../bot.types";
-import { controlLight, hues, randomHue } from "../api/hue";
-import { CommandInteractionOptionResolver } from "discord.js";
+import {
+  controlLight,
+  fetchLights,
+  getLightIds,
+  id,
+  randomHue,
+} from "../api/hue";
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -14,9 +19,17 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
-    const hue = randomHue();
+    await interaction.deferReply();
     const lightId = interaction.options.getInteger("light-id");
-    controlLight(lightId, { on: true, hue });
-    await interaction.reply(`Changed light ${lightId} to hue ${hue}`);
+    const idList = await getLightIds(fetchLights);
+    const lightIds = Object.keys(idList) as id[];
+    const existingLight = lightIds.includes(lightId.toString());
+    if (existingLight) {
+      const hue = randomHue();
+      controlLight(lightId, { on: true, hue });
+      await interaction.editReply(`Changed light ${lightId} to hue ${hue}`);
+    } else {
+      await interaction.editReply(`Light ${lightId} not found`);
+    }
   },
 } as Command;

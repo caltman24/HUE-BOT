@@ -7,13 +7,11 @@ module.exports = {
     .setName("lights")
     .setDescription("Return a list of lights and their IDs"),
   async execute(interaction) {
+    await interaction.deferReply({ ephemeral: true });
     const idList = await getLightIds(fetchLights);
     const lightIds = Object.keys(idList) as id[];
     const lightNames = Object.values(idList);
     const lightList = lightIds.map((id, i) => `${id}: ${lightNames[i]}`);
-    await interaction.reply({
-      content: `${lightList.join("\n")}`,
-      ephemeral: true,
-    });
+    await interaction.editReply(`${lightList.join("\n")}`);
   },
 } as Command;
