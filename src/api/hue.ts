@@ -64,14 +64,6 @@ export const getLightIds = async (fetchLights: FetchLightFunc) => {
   return idList;
 };
 
-getLightIds(fetchLights).then((idList) => {
-  console.log(idList);
-  const lightIds = Object.keys(idList);
-  const lightNames = Object.values(idList);
-  const lightList = lightIds.map((id, i) => `${id}: ${lightNames[i]}`);
-  console.log(`${lightList.join("\n")}`);
-});
-
 // Control a light by light ID and the desired state
 export const controlLight = async (
   light: id,
