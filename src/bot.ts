@@ -10,6 +10,7 @@ const client = new Client({
   intents: [Intents.FLAGS.GUILDS],
 }) as ApplicationClient;
 
+// TODO: Commands - /hue; /sat; /bri /state;
 client.commands = new Collection();
 const commandPath = path.join(__dirname, "commands");
 const commandFiles = fs

@@ -64,9 +64,30 @@ export const getLightIds = async (fetchLights: FetchLightFunc) => {
   return idList;
 };
 
+export const getCurrentState = async (id: id) => {
+  const url = `http://${BRIDGE_IP}/api/${USER_ID}/lights/${id}`;
+  try {
+    const { data } = await axios.get(url);
+    return data.state;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
+
 export const getCurrentHue = async (id: id) => {
-  const { data } = await fetchLights();
-  return data[id].state.hue as number;
+  const { hue } = await getCurrentState(id);
+  return hue as number;
+};
+
+export const getCurrentSaturation = async (id: id) => {
+  const { sat } = await getCurrentState(id);
+  return sat as number;
+};
+
+export const getCurrentBrightness = async (id: id) => {
+  const { bri } = await getCurrentState(id);
+  return bri as number;
 };
 
 // Control a light by light ID and the desired state
@@ -87,3 +108,8 @@ export const controlLight = async (
     return null;
   }
 };
+
+//TODO: add a function to control on state of a light
+//TODO: add a function to control hue state of a light
+//TODO: add a function to control sat state of a light
+//TODO: add a function to control bri state of a light

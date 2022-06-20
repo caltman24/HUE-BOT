@@ -4,10 +4,13 @@ import {
   controlLight,
   fetchLights,
   getCurrentHue,
+  getCurrentSaturation,
+  getCurrentBrightness,
   getLightIds,
   id,
 } from "../api/hue";
 
+// TODO: Add "state" command to dd the ability to turn off light without changing other values
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("control")
@@ -32,15 +35,17 @@ module.exports = {
   async execute(interaction) {
     await interaction.deferReply();
     const lightId = interaction?.options.getInteger("light-id");
-    const currentHue = await getCurrentHue(lightId);
-    const hue = interaction?.options.getInteger("light-hue") || currentHue;
-    const sat = interaction?.options.getInteger("light-sat") || 254;
-    const bri = interaction?.options.getInteger("light-bri") || 254;
     const idList = await getLightIds(fetchLights);
     const lightIds = Object.keys(idList) as id[];
     const existingLight = lightIds.includes(lightId.toString());
     if (existingLight) {
-      controlLight(lightId, { on: true, hue, bri, sat });
+      const currentHue = await getCurrentHue(lightId);
+      const currentSat = await getCurrentSaturation(lightId);
+      const currentBri = await getCurrentBrightness(lightId);
+      const hue = interaction?.options.getInteger("light-hue") || currentHue;
+      const sat = interaction?.options.getInteger("light-sat") || currentSat;
+      const bri = interaction?.options.getInteger("light-bri") || currentBri;
+      controlLight(lightId, { on: true, hue, sat, bri });
       await interaction.editReply(
         `Changed light ${lightId}\nhue: ${hue}\nbri: ${bri}\nsat: ${sat}`
       );

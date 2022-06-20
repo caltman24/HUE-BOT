@@ -13,6 +13,6 @@ module.exports = {
     const lightIds = Object.keys(idList) as id[];
     const lightNames = Object.values(idList);
     const lightList = lightIds.map((id, i) => `${id}: ${lightNames[i]}`);
-    await interaction.editReply(`${lightList.join("\n")}`);
+    await interaction.editReply(lightList.join("\n"));
   },
 } as Command;

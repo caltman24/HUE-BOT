@@ -1,6 +1,7 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
 import { Command } from "../bot.types";
 
+// TODO: Finish help command
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
