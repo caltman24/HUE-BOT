@@ -28,5 +28,8 @@ Hue Bot is a work in progress bot for Discord servers build on top of [discord.j
 ### Commands
 
 - `/lights`&nbsp; -> Lists all lights and their corresponding ids
-- `/control [lightID] [on/off] [color]`&nbsp; -> Control the specified light's on/off state and color
+- `/control [lightID] [on/off] [hue <0 - 65535>] [sat <0 - 254>] [bri <0 - 254>]`&nbsp; -> Control the specified light's on/off state and color
 - `/random [lightID] [on/off]`&nbsp; -> Set the specified light's color to random
+- `/hue [lightID] [hue <0 - 65535>]`&nbsp; -> Set the specified light's hue
+- `/saturation [lightID] [sat <0 - 254>]`&nbsp; -> Set the specified light's saturation level
+- `/brightness [lightID] [bri <0 - 254>]`&nbsp; -> Set the specified light's brightness level
